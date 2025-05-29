@@ -26,7 +26,7 @@
             </a>
         </div>
 
-        <form action="{{ url('books/create') }}" method="POST" class="space-y-6">
+        <form action="" method="POST" class="space-y-6">
             @csrf
 
             <!-- Name -->

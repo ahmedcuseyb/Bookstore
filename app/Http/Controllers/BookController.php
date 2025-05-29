@@ -29,7 +29,7 @@ class BookController extends Controller
             'is_active' => 'sometimes',
         ]);
 
-        // Create a new category
+        // Create a new book
        Book::create([
             'name' => $request->name,
             'description' => $request->description,
