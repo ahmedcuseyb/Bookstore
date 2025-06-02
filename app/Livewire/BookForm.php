@@ -2,36 +2,41 @@
 
 namespace App\Livewire;
 
-use App\Models\Book;
 use Livewire\Component;
+use App\Models\Book;
 
 class BookForm extends Component
 {
     public $name;
+    public $auther;
     public $description;
-    public $is_active = false;
 
+    // 🔽 Put this inside the class
     protected $rules = [
         'name' => 'required|string|max:255',
+        'auther' => 'required|string',
         'description' => 'required|string',
-        'is_active' => 'boolean',
     ];
 
-   
+    // 🔽 Real-time validation for each updated field
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function submit()
     {
-     
-        //model create
+        $this->validate(); // Validates all fields at once
+
         Book::create([
             'name' => $this->name,
+            'auther' => $this->auther,
             'description' => $this->description,
-            'is_active' => $this->is_active,
         ]);
-        $this->reset(['name', 'description', 'is_active']);
-        return redirect('books/')->with('status', 'book created successfully.');
-         
-            // session()->flash('status', 'Book created successfully.');
+
+        $this->reset(['name', 'auther', 'description']);
+
+        return redirect('books/')->with('status', 'Book created successfully.');
         
     }
 
@@ -39,8 +44,4 @@ class BookForm extends Component
     {
         return view('livewire.book-form');
     }
- 
-
-   
-    
 }

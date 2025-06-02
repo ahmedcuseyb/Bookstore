@@ -24,22 +24,28 @@ class BookController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
+            'auther' => 'required|string|max:1000',
             'description' => 'required|string|max:1000',
             // 'is_active' => 'required|boolean',
-            'is_active' => 'sometimes',
+            // 'is_active' => 'sometimes',
         ]);
 
         // Create a new book
        Book::create([
             'name' => $request->name,
+            'auther' => $request->description,
             'description' => $request->description,
             // 'is_active' => $request->is_active,
-            'is_active' =>$request->is_active==true ? 1:0,
+            // 'is_active' =>$request->is_active==true ? 1:0,
         ]);
 
         // Redirect to the index page with a success message
         // return redirect('categories/create')->with('status', 'Category created successfully.');
-        return redirect('books/')->with('status', 'book created successfully.');
+        return redirect('books/create/')->with('status', 'book created successfully.');
+        // return view('book.create');
+        // alert()->success('Book created successfully.');
+
+
     }
 
     // editing and updating
@@ -55,21 +61,24 @@ class BookController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
+            'auther' => 'required|string|max:1000',
             'description' => 'required|string|max:1000',
             // 'is_active' => 'required|boolean',
-            'is_active' => 'sometimes',
+            // 'is_active' => 'sometimes',
         ]);
 
-        // Create a new category
+        // Create a new book
        Book::findOrFail($id)->update([
             'name' => $request->name,
+            'auther' => $request->description,
             'description' => $request->description,
             // 'is_active' => $request->is_active,
-            'is_active' =>$request->is_active==true ? 1:0,
+            // 'is_active' =>$request->is_active==true ? 1:0,
         ]);
 
         // Redirect to the index page with a success message
         return redirect('books/')->with('status', 'Book updted successfully.');
+
         // return redirect()->back()->with('status', 'Category updated successfully.');
     }
 

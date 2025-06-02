@@ -39,6 +39,16 @@
                   @error('name') <span class="text-danger"l>{{ $message }}</span>@enderror  
                 
             </div>
+            {{-- Auther --}}
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Auther</label>
+                <input type="text" name="auther" value="{{ $book->auther }}"
+                    class="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Enter category name" />
+                  @error('auther') <span class="text-danger"l>{{ $message }}</span>@enderror  
+                
+            </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
@@ -47,14 +57,14 @@
 
             </div>
 
-            <div class="flex items-center space-x-2">
+            {{-- <div class="flex items-center space-x-2">
                 <input type="checkbox" name="is_active"
                     class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                     {{ $book->isactive == true ? 'checked' : '' }} />
                 @error('is_active') <span class="text-danger"l>{{ $message }}</span>@enderror  
 
                 <label class="text-sm text-gray-700">Is Active</label>
-            </div>
+            </div> --}}
 
             <div>
                 <button type="submit"

@@ -26,8 +26,9 @@
                     <tr>
                         <th class="px-4 py-2 border-b">ID</th>
                         <th class="px-4 py-2 border-b">Name</th>
+                        <th class="px-4 py-2 border-b">Auther</th>
                         <th class="px-4 py-2 border-b">Description</th>
-                        <th class="px-4 py-2 border-b">Is Active</th>
+                        {{-- <th class="px-4 py-2 border-b">Is Active</th> --}}
                         <th class="px-4 py-2 border-b">Actions</th>
                     </tr>
                 </thead>
@@ -36,10 +37,11 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-4 py-2 border-b">{{ $book->id }}</td>
                             <td class="px-4 py-2 border-b">{{ $book->name }}</td>
+                            <td class="px-4 py-2 border-b">{{ $book->auther }}</td>
                             <td class="px-4 py-2 border-b">{{ $book->description }}</td>
-                            <td class="px-4 py-2 border-b">
+                            {{-- <td class="px-4 py-2 border-b">
                                 {{ $book->is_active ? 'Yes' : 'No' }}
-                            </td>
+                            </td> --}}
                             <td class="px-4 py-2 border-b flex gap-2">
                                 <a href="{{ url('books/'.$book->id.'/edit') }}"
                                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded text-xs">
